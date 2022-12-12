@@ -1,0 +1,19 @@
+version: "3.7"
+
+services:
+    nginx-plus:
+        container_name: nginx-plus
+        image: nginx-plus
+        build: .
+        ports:
+            - "80:80"
+            - "443:443"
+            - "8080:8080"
+        volumes:
+            - $PWD/etc/nginx:/etc/nginx
+    backend:
+      container_name: backend
+      image: backend
+      build: ./backend
+      ports: 
+        - 3000:3000
